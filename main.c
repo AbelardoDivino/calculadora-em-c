@@ -80,7 +80,7 @@ int main()
 
         case 4:
 
-            res = divis(n1, n2);
+            res = sub(n1, n2);
             printf("A subtracao e: %.2f\n", res);
             break;
 
