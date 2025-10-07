@@ -1,93 +1,79 @@
 #include <stdio.h>
-// 4 opcçoes para 1 - soma 2 - multiplicaçao - 3- divisao 4 - subtraçao 0 - sair
-// colocar while para repitir enquanto nao for de 1 a 4
 
-float soma(float a, float b)
-{
-
-    float soma = a + b;
-
-    return soma;
+// Funções matemáticas
+float soma(float a, float b) {
+    return a + b;
 }
 
-float mult(float a, float b)
-{
-
-    float mult = a * b;
-
-    return mult;
+float mult(float a, float b) {
+    return a * b;
 }
 
-float divis(float a, float b)
-{
-
-    float divis = a / b;
-
-    return divis;
+float divis(float a, float b) {
+    return (b != 0) ? a / b : 0; // evita divisão por zero
 }
 
-float sub(float a, float b)
-{
-
-    float sub = a - b;
-
-    return sub;
+float sub(float a, float b) {
+    return a - b;
 }
 
-int main()
-{
-
-    int opcao, flag = 1;
+int main() {
+    int opcao;
     float n1, n2, res;
 
-    while (opcao != 0)
-    {
-        printf(" Opcoes\n");
-        printf(" Digite 1 Para soma \n");
-        printf("Digite 2 para multiplicacao\n");
-        printf("Digite 3 para divisao\n");
-        printf("Digite 4 para subtracao\n");
-        printf(" Digite 0 para sair\n");
-        scanf("%d", &opcao);
+    do {
+        // loop de validação do menu
+        do {
+            printf("\n=== Calculadora ===\n");
+            printf("1 - Soma\n");
+            printf("2 - Multiplicacao\n");
+            printf("3 - Divisao\n");
+            printf("4 - Subtracao\n");
+            printf("0 - Sair\n");
+            printf("Escolha uma opcao: ");
+            scanf("%d", &opcao);
 
-        if (flag == 0)
-        {
-            break;
+            if (opcao < 0 || opcao > 4) {
+                printf("❌ Opcao invalida! Digite um numero entre 0 e 4.\n");
+            }
+        } while (opcao < 0 || opcao > 4);
+
+        if (opcao >= 1 && opcao <= 4) {
+            printf("Digite dois valores: ");
+            scanf("%f %f", &n1, &n2);
         }
 
-        printf("digite os 2 valores para as oprecacoes matematicas\n");
-        scanf("%f%f", &n1, &n2);
+        switch (opcao) {
+            case 1:
+                res = soma(n1, n2);
+                printf("Resultado da soma: %.2f\n", res);
+                break;
 
-        switch (opcao)
-        {
-        case 1:
+            case 2:
+                res = mult(n1, n2);
+                printf("Resultado da multiplicacao: %.2f\n", res);
+                break;
 
-            res = soma(n1, n2);
-            printf(" Asoma e: %.2f\n", res);
-            break;
+            case 3:
+                if (n2 != 0) {
+                    res = divis(n1, n2);
+                    printf("Resultado da divisao: %.2f\n", res);
+                } else {
+                    printf("❌ Erro: divisao por zero!\n");
+                }
+                break;
 
-        case 2:
+            case 4:
+                res = sub(n1, n2);
+                printf("Resultado da subtracao: %.2f\n", res);
+                break;
 
-            res = mult(n1, n2);
-            printf("A multiplicacao e: %.2f\n", res);
-            break;
-
-        case 3:
-
-            res = divis(n1, n2);
-            printf("A divisao e: %.2f\n", res);
-            break;
-
-        case 4:
-
-            res = sub(n1, n2);
-            printf("A subtracao e: %.2f\n", res);
-            break;
-
-        default:
-            break;
+            case 0:
+                printf("Encerrando o programa...\n");
+                break;
         }
-    }
+
+    } while (opcao != 0);
 
     return 0;
 }
