@@ -1,4 +1,5 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<stdlib.h>
 // 4 opcçoes para 1 - soma 2 - multiplicaçao - 3- divisao 4 - subtraçao 0 - sair
 // colocar while para repitir enquanto nao for de 1 a 4
 
@@ -21,6 +22,13 @@ float mult(float a, float b)
 float divis(float a, float b)
 {
 
+    if (b == 0)
+    {
+        printf("erro divisao por zero\n");
+        return 0;
+    }
+    
+
     float divis = a / b;
 
     return divis;
@@ -37,11 +45,14 @@ float sub(float a, float b)
 int main()
 {
 
+    
     int opcao, flag = 1;
     float n1, n2, res;
 
     while (opcao != 0)
     {
+        system("cls");
+
         printf(" Opcoes\n");
         printf(" Digite 1 Para soma \n");
         printf("Digite 2 para multiplicacao\n");
@@ -87,6 +98,7 @@ int main()
         default:
             break;
         }
+         system("pause");
     }
 
     return 0;
