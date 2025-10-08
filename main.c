@@ -46,7 +46,7 @@ int main()
 {
 
     
-    int opcao, flag = 1;
+    int opcao=1;
     float n1, n2, res;
 
     while (opcao != 0)
@@ -61,10 +61,12 @@ int main()
         printf(" Digite 0 para sair\n");
         scanf("%d", &opcao);
 
-        if (flag == 0)
-        {
-            break;
-        }
+       if (opcao == 0)
+       {
+          printf("Encerrando o programa ...\n");
+          break;
+       }
+       
 
         printf("digite os 2 valores para as oprecacoes matematicas\n");
         scanf("%f%f", &n1, &n2);
