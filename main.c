@@ -67,6 +67,13 @@ int main()
           break;
        }
        
+       if (opcao <1 || opcao >4)
+       {
+            printf("Opcao invalida! Tente novamente.\n");
+            system("pause");
+            continue;
+       }
+       
 
         printf("digite os 2 valores para as oprecacoes matematicas\n");
         scanf("%f%f", &n1, &n2);
